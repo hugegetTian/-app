@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="applicable-device" content="mobile" />
+    <!-- 移动端 浏览器中页面将以原始大小显示，不允许缩放 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <!-- iphone会把一串数字识别为电话号码，点击的时候会提示是否呼叫，屏蔽这功能则把telephone设置为no -->
+    <meta content="telephone=no" name="format-detection"/>
+    <!-- iphone的私有标签，默认值为default（白色），可以定为black（黑色）和black-translucent（灰色半透明） -->
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!-- iphone设备的是有标签 允许全屏模式浏览，隐藏浏览器导航栏 -->
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <!-- 全屏显示 -->
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- 屏蔽百度转码 -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>航道信息</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/mybootstrap.css">
+    <link rel="stylesheet" href="css/pub.css">
+    <link rel="stylesheet" href="css/hdxx.css">
+    <script src="js/js.js"></script>
+</head>
+<body class="bg">
+    <div class="search">
+        <input type="text" id="searchCityName" placeholder="请输入船闸名称或名称首字母">
+    </div>
+    <div class="groupcontent">
+        <div class="list-group">
+            <ul>
+                <li class="list-group-item" pinyin="yzcz" cityname="扬州船闸">
+                    <span>扬州船闸</span>
+                    <span class="imgcollect" onclick="changeImg(this)"></span>
+                </li>
+                <li class="list-group-item" pinyin="gycz" cityname="高邮船闸">
+                    <span>高邮船闸</span>
+                    <span class="imgcollect" onclick="changeImg(this)"></span>
+                </li>
+                <li class="list-group-item" pinyin="hacz" cityname="海安船闸">
+                    <span>海安船闸</span>
+                    <span class="imgcollect" onclick="changeImg(this)"></span>
+                </li>
+                <li class="list-group-item" pinyin="wxcz" cityname="无锡船闸">
+                    <span>无锡船闸</span>
+                    <span class="imgcollect" onclick="changeImg(this)"></span>
+                </li>
+                <li class="list-group-item" pinyin="szcz" cityname="苏州船闸">
+                    <span>苏州船闸</span>
+                    <span class="imgcollect" onclick="changeImg(this)"></span>
+                </li>
+                <li class="list-group-item" pinyin="ntcz" cityname="南通船闸">
+                    <span>南通船闸</span>
+                    <span class="imgcollect" onclick="changeImg(this)"></span>
+                </li>
+                <li class="list-group-item" pinyin="czcz" cityname="常州船闸">
+                    <span>常州船闸</span>
+                    <span class="imgcollect" onclick="changeImg(this)"></span>
+                </li>
+                <li  class="list-group-item" pinyin="njcz" cityname="南京船闸">
+                    <span>南京船闸</span>
+                    <span class="imgcollect" onclick="changeImg(this)"></span>
+                </li>
+                <li class="list-group-item" pinyin="gycz" cityname="高邮船闸">
+                    <span>高邮船闸</span>
+                    <span class="imgcollect" onclick="changeImg(this)"></span>
+                </li>
+                <li class="list-group-item" pinyin="hacz" cityname="海安船闸">
+                    <span>海安船闸</span>
+                    <span class="imgcollect" onclick="changeImg(this)"></span>
+                </li>
+                <li class="list-group-item" pinyin="wxcz" cityname="无锡船闸">
+                    <span>无锡船闸</span>
+                    <span class="imgcollect" onclick="changeImg(this)"></span>
+                </li>
+                <li class="list-group-item" pinyin="szcz" cityname="苏州船闸">
+                    <span>苏州船闸</span>
+                    <span class="imgcollect" onclick="changeImg(this)"></span>
+                </li>
+                <li class="list-group-item" pinyin="ntcz" cityname="南通船闸">
+                    <span>南通船闸</span>
+                    <span class="imgcollect" onclick="changeImg(this)"></span>
+                </li>
+                <li class="list-group-item" pinyin="czcz" cityname="常州船闸">
+                    <span>常州船闸</span>
+                    <span class="imgcollect" onclick="changeImg(this)"></span>
+                </li>
+                <li class="list-group-item" pinyin="szcz" cityname="苏州船闸">
+                    <span>苏州船闸</span>
+                    <span class="imgcollect" onclick="changeImg(this)"></span>
+                </li>
+                <li class="list-group-item" pinyin="ntcz" cityname="南通船闸">
+                    <span>南通船闸</span>
+                    <span class="imgcollect" onclick="changeImg(this)"></span>
+                </li>
+                <li class="list-group-item" pinyin="czcz" cityname="常州船闸">
+                    <span>常州船闸</span>
+                    <span class="imgcollect" onclick="changeImg(this)"></span>
+                </li>
+                <li  class="list-group-item" pinyin="njcz" cityname="南京船闸">
+                    <span>南京船闸</span>
+                    <span class="imgcollect" onclick="changeImg(this)"></span>
+                </li>
+                <li class="list-group-item" pinyin="gycz" cityname="高邮船闸">
+                    <span>高邮船闸</span>
+                    <span class="imgcollect" onclick="changeImg(this)"></span>
+                </li>
+                <li class="list-group-item" pinyin="hacz" cityname="海安船闸">
+                    <span>海安船闸</span>
+                    <span class="imgcollect" onclick="changeImg(this)"></span>
+                </li>
+                <li class="list-group-item" pinyin="wxcz" cityname="无锡船闸">
+                    <span>无锡船闸</span>
+                    <span class="imgcollect" onclick="changeImg(this)"></span>
+                </li>
+                <li class="list-group-item" pinyin="szcz" cityname="苏州船闸">
+                    <span>苏州船闸</span>
+                    <span class="imgcollect" onclick="changeImg(this)"></span>
+                </li>
+                <li class="list-group-item" pinyin="ntcz" cityname="南通船闸">
+                    <span>南通船闸</span>
+                    <span class="imgcollect" onclick="changeImg(this)"></span>
+                </li>
+                <li class="list-group-item" pinyin="czcz" cityname="常州船闸">
+                    <span>常州船闸</span>
+                    <span class="imgcollect" onclick="changeImg(this)"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div style="position:fixed;bottom: 0.5rem;right: 0.2rem;width: 1rem;" id="p3">
+        <img src="images/dit.png" alt="" style="width: 100%;">
+    </div>
+<script src="js/jquery-1.11.3.js"></script>
+<!--<script src="js/bootstrap.js"></script>-->
+<script>
+    function preventBubble(event){
+        var e=arguments.callee.caller.arguments[0]||event; //若省略此句，下面的e改为event，IE运行可以，但是其他浏览器就不兼容
+        if (e && e.stopPropagation) {
+            e.stopPropagation();
+        } else if (window.event) {
+            window.event.cancelBubble = true;
+        }
+    }
+    function changeImg(obj){
+        if($(obj).hasClass("imgcollect2")){
+            $(obj).removeClass("imgcollect2");
+            alert("取消收藏")
+        }else if(!$(obj).hasClass("imgcollect2")){
+            $(obj).addClass("imgcollect2")
+            alert("收藏成功")
+        }
+        preventBubble();
+    }
+    function searchCity() {
+        var searchCityName = $("#searchCityName").val();
+        if (searchCityName == "") {
+            $("ul li").show();
+        } else {
+            $("ul li").each(function() {
+                var pinyin = $(this).attr("pinyin");
+                var cityName = $(this).attr("cityname");
+                if (pinyin.indexOf(searchCityName) != -1|| cityName.indexOf(searchCityName) != -1) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        }
+    }
+    $('#searchCityName').bind('input propertychange', function() {
+        searchCity();
+    });
+    var p3=document.getElementById("p3")
+    p3.onclick=function(){
+        alert(1)
+    }
+    p3.ondragstart=function(e){
+        console.log('事件源p3开始拖动');
+        //记录刚一拖动时，鼠标在飞机上的偏移量
+        offsetX= e.offsetX;
+        offsetY= e.offsetY;
+    }
+    p3.ondrag=function(e){
+        console.log('事件源p3拖动中');
+        var x= e.pageX;
+        var y= e.pageY;
+        console.log(x+'-'+y);
+        //drag事件最后一刻，无法读取鼠标的坐标，pageX和pageY都变为0
+        if(x==0 && y==0){
+            return; //不处理拖动最后一刻X和Y都为0的情形
+        }
+        x-=offsetX;
+        y-=offsetY;
+
+        p3.style.left=x+'px';
+        p3.style.top=y+'px';
+    }
+    p3.ondragend=function(){
+        console.log('源对象p3拖动结束');
+    }
+</script>
+</body>
+</html>

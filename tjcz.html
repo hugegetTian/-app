@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="applicable-device" content="mobile" />
+    <!-- 移动端 浏览器中页面将以原始大小显示，不允许缩放 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <!-- iphone会把一串数字识别为电话号码，点击的时候会提示是否呼叫，屏蔽这功能则把telephone设置为no -->
+    <meta content="telephone=no" name="format-detection"/>
+    <!-- iphone的私有标签，默认值为default（白色），可以定为black（黑色）和black-translucent（灰色半透明） -->
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!-- iphone设备的是有标签 允许全屏模式浏览，隐藏浏览器导航栏 -->
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <!-- 全屏显示 -->
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- 屏蔽百度转码 -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>Title</title>
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/mybootstrap.css">
+    <link rel="stylesheet" href="css/drag.css">
+    <link rel="stylesheet" href="css/pub.css">
+    <link rel="stylesheet" href="css/qyhc.css">
+    <script src="js/js.js"></script>
+</head>
+<body class="bg">
+    <div class="hccontent">
+        <div class="cont">
+            <div class="tjczcontent">
+                <div class="tjcz">
+                    <div>途经船闸</div>
+                    <div class="xz" data-toggle="modal" data-target="#myModal">
+                        <img src="images/add.png" alt="">
+                    </div>
+                </div>
+                <div class="rounte">
+                    <div class="hxinfor">
+                        <ul class="jg"></ul>
+                        <ul class="wjg" id="containers"></ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="posi">
+            <div>
+                <input type="text" placeholder="请填写航次起点" class="start" data-toggle="modal" data-target="#myModal1">
+            </div>
+            <span class="lr">
+                <img src="images/lr.png" alt="">
+            </span>
+            <div>
+                <input type="text" placeholder="请填写航次终点" class="end" data-toggle="modal" data-target="#myModal2">
+            </div>
+        </div>
+        <div class="ship">
+            <div class="shipdata">
+                <div>船舶净高</div>
+                <input type="text" placeholder="请填写船舶净高">
+            </div>
+            <div class="shipdata">
+                <div>船舶吃水</div>
+                <input type="text" placeholder="请填写船舶吃水">
+            </div>
+            <div class="shipdata">
+                <div>实际载货</div>
+                <input type="text" placeholder="实际载货量">
+            </div>
+            <div class="shipdata" style="border: none">
+                <div>货物种类</div>
+                <select>
+                    <option value="1">钢材</option>
+                    <option value="1">石料</option>
+                    <option value="1">木材</option>
+                    <option value="1">钢材</option>
+                    <option value="1">钢材</option>
+                </select>
+            </div>
+        </div>
+        <div class="dangergoods">
+            <div class="shipdata" style="border: none;overflow: hidden">
+                <div>是否危险品</div>
+                <label class="toggle toggle-positive">
+                    <input type="hidden" value="off">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div class="ship">
+            <div class="shipdata">
+                <div>集装箱数</div>
+                <input type="text" placeholder="请填数量">
+            </div>
+            <div class="shipdata">
+                <div>超载级别</div>
+                <select>
+                    <option value="1">未超载</option>
+                    <option value="1">轻度超载</option>
+                    <option value="1">严重超载</option>
+                </select>
+            </div>
+            <div class="shipdata shipdata-posi" style="overflow: hidden">
+                <div>是否超长</div>
+                <label class="toggle toggle-positive">
+                    <input type="hidden" value="off">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </div>
+            <div class="shipdata shipdata-posi" style="border: none;overflow: hidden">
+                <div>是否超宽</div>
+                <label class="toggle toggle-positive">
+                    <input type="hidden" value="off">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <p class="modal-title" id="myModalLabel">船闸选择</p>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active Mycollect"><a href="#mycollect" aria-controls="home" role="tab" data-toggle="tab">我的收藏</a></li>
+                        <li role="presentation" class="Allcz"><a href="#allcz" aria-controls="profile" role="tab" data-toggle="tab">全部船闸</a></li>
+                    </ul>
+                    <div class="tab-content" style="margin-top: 10px;min-height: 3rem;">
+                        <div role="tabpanel" class="tab-pane active" id="mycollect">
+                            <div class="collectLeft">
+                                <div class="list-group group1">
+                                    <ul>
+                                        <li class="list-group-item" pinyin="yzcz" cityname="扬州船闸">
+                                            <span>扬州船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="gycz" cityname="高邮船闸">
+                                            <span>高邮船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="hacz" cityname="海安船闸">
+                                            <span>海安船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="wxcz" cityname="无锡船闸">
+                                            <span>无锡船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="szcz" cityname="苏州船闸">
+                                            <span>苏州船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="ntcz" cityname="南通船闸">
+                                            <span>南通船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="czcz" cityname="常州船闸">
+                                            <span>常州船闸</span>
+                                        </li>
+                                        <li  class="list-group-item" pinyin="njcz" cityname="南京船闸">
+                                            <span>南京船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="gycz" cityname="高邮船闸">
+                                            <span>高邮船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="hacz" cityname="海安船闸">
+                                            <span>海安船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="wxcz" cityname="无锡船闸">
+                                            <span>无锡船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="szcz" cityname="苏州船闸">
+                                            <span>苏州船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="ntcz" cityname="南通船闸">
+                                            <span>南通船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="czcz" cityname="常州船闸">
+                                            <span>常州船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="szcz" cityname="苏州船闸">
+                                            <span>苏州船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="ntcz" cityname="南通船闸">
+                                            <span>南通船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="czcz" cityname="常州船闸">
+                                            <span>常州船闸</span>
+                                        </li>
+                                        <li  class="list-group-item" pinyin="njcz" cityname="南京船闸">
+                                            <span>南京船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="gycz" cityname="高邮船闸">
+                                            <span>高邮船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="hacz" cityname="海安船闸">
+                                            <span>海安船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="wxcz" cityname="无锡船闸">
+                                            <span>无锡船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="szcz" cityname="苏州船闸">
+                                            <span>苏州船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="ntcz" cityname="南通船闸">
+                                            <span>南通船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="czcz" cityname="常州船闸">
+                                            <span>常州船闸</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="collectRight">
+                                <div class="list-group group2">
+                                    <ul>
+                                        <li class="list-group-item abg">上行</li>
+                                        <li class="list-group-item">下行</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="allcz">
+                            <input type="text" placeholder="请输入搜索内容" class="search searchCityName">
+                            <div class="collectLeft">
+                                <div class="list-group  group1 allcontent">
+                                    <ul>
+                                        <li class="list-group-item" pinyin="yzcz" cityname="扬州船闸">
+                                            <span>扬州船闸</span>
+
+                                        </li>
+                                        <li class="list-group-item" pinyin="gycz" cityname="高邮船闸">
+                                            <span>高邮船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="hacz" cityname="海安船闸">
+                                            <span>海安船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="wxcz" cityname="无锡船闸">
+                                            <span>无锡船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="szcz" cityname="苏州船闸">
+                                            <span>苏州船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="ntcz" cityname="南通船闸">
+                                            <span>南通船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="czcz" cityname="常州船闸">
+                                            <span>常州船闸</span>
+                                        </li>
+                                        <li  class="list-group-item" pinyin="njcz" cityname="南京船闸">
+                                            <span>南京船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="gycz" cityname="高邮船闸">
+                                            <span>高邮船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="hacz" cityname="海安船闸">
+                                            <span>海安船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="wxcz" cityname="无锡船闸">
+                                            <span>无锡船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="szcz" cityname="苏州船闸">
+                                            <span>苏州船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="ntcz" cityname="南通船闸">
+                                            <span>南通船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="czcz" cityname="常州船闸">
+                                            <span>常州船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="szcz" cityname="苏州船闸">
+                                            <span>苏州船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="ntcz" cityname="南通船闸">
+                                            <span>南通船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="czcz" cityname="常州船闸">
+                                            <span>常州船闸</span>
+                                        </li>
+                                        <li  class="list-group-item" pinyin="njcz" cityname="南京船闸">
+                                            <span>南京船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="gycz" cityname="高邮船闸">
+                                            <span>高邮船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="hacz" cityname="海安船闸">
+                                            <span>海安船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="wxcz" cityname="无锡船闸">
+                                            <span>无锡船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="szcz" cityname="苏州船闸">
+                                            <span>苏州船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="ntcz" cityname="南通船闸">
+                                            <span>南通船闸</span>
+                                        </li>
+                                        <li class="list-group-item" pinyin="czcz" cityname="常州船闸">
+                                            <span>常州船闸</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div style="width:50%;float:right;position: relative">
+                                <div class="list-group  group2 sx">
+                                    <ul>
+                                        <li class="list-group-item abg">上行</li>
+                                        <li class="list-group-item">下行</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary sure" data-dismiss="modal">确认</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <p class="modal-title" id="myModalLabel1">航次起点</p>
+                </div>
+                <div class="modal-body">
+                    <input type="text" placeholder="请输入搜索内容" class="search searchCityName1">
+                    <div class="list-group hcstart" style="max-height: 5rem;overflow: auto;margin-bottom: 0;border-top:1px solid #ccc;">
+                        <ul>
+                            <li class="list-group-item" pinyin="yzcz" cityname="扬州船闸">
+                                <span>扬州船闸</span>
+
+                            </li>
+                            <li class="list-group-item" pinyin="gycz" cityname="高邮船闸">
+                                <span>高邮船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="hacz" cityname="海安船闸">
+                                <span>海安船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="wxcz" cityname="无锡船闸">
+                                <span>无锡船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="szcz" cityname="苏州船闸">
+                                <span>苏州船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="ntcz" cityname="南通船闸">
+                                <span>南通船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="czcz" cityname="常州船闸">
+                                <span>常州船闸</span>
+                            </li>
+                            <li  class="list-group-item" pinyin="njcz" cityname="南京船闸">
+                                <span>南京船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="gycz" cityname="高邮船闸">
+                                <span>高邮船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="hacz" cityname="海安船闸">
+                                <span>海安船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="wxcz" cityname="无锡船闸">
+                                <span>无锡船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="szcz" cityname="苏州船闸">
+                                <span>苏州船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="ntcz" cityname="南通船闸">
+                                <span>南通船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="czcz" cityname="常州船闸">
+                                <span>常州船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="szcz" cityname="苏州船闸">
+                                <span>苏州船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="ntcz" cityname="南通船闸">
+                                <span>南通船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="czcz" cityname="常州船闸">
+                                <span>常州船闸</span>
+                            </li>
+                            <li  class="list-group-item" pinyin="njcz" cityname="南京船闸">
+                                <span>南京船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="gycz" cityname="高邮船闸">
+                                <span>高邮船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="hacz" cityname="海安船闸">
+                                <span>海安船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="wxcz" cityname="无锡船闸">
+                                <span>无锡船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="szcz" cityname="苏州船闸">
+                                <span>苏州船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="ntcz" cityname="南通船闸">
+                                <span>南通船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="czcz" cityname="常州船闸">
+                                <span>常州船闸</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary qdsure" data-dismiss="modal">确认</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <p class="modal-title" id="myModalLabel2">航次起点</p>
+                </div>
+                <div class="modal-body">
+                    <input type="text" placeholder="请输入搜索内容" class="search searchCityName2">
+                    <div class="list-group hcend" style="max-height: 5rem;overflow: auto;margin-bottom: 0;border-top:1px solid #ccc;">
+                        <ul>
+                            <li class="list-group-item" pinyin="yzcz" cityname="扬州船闸">
+                                <span>扬州船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="gycz" cityname="高邮船闸">
+                                <span>高邮船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="hacz" cityname="海安船闸">
+                                <span>海安船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="wxcz" cityname="无锡船闸">
+                                <span>无锡船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="szcz" cityname="苏州船闸">
+                                <span>苏州船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="ntcz" cityname="南通船闸">
+                                <span>南通船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="czcz" cityname="常州船闸">
+                                <span>常州船闸</span>
+                            </li>
+                            <li  class="list-group-item" pinyin="njcz" cityname="南京船闸">
+                                <span>南京船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="gycz" cityname="高邮船闸">
+                                <span>高邮船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="hacz" cityname="海安船闸">
+                                <span>海安船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="wxcz" cityname="无锡船闸">
+                                <span>无锡船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="szcz" cityname="苏州船闸">
+                                <span>苏州船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="ntcz" cityname="南通船闸">
+                                <span>南通船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="czcz" cityname="常州船闸">
+                                <span>常州船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="szcz" cityname="苏州船闸">
+                                <span>苏州船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="ntcz" cityname="南通船闸">
+                                <span>南通船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="czcz" cityname="常州船闸">
+                                <span>常州船闸</span>
+                            </li>
+                            <li  class="list-group-item" pinyin="njcz" cityname="南京船闸">
+                                <span>南京船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="gycz" cityname="高邮船闸">
+                                <span>高邮船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="hacz" cityname="海安船闸">
+                                <span>海安船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="wxcz" cityname="无锡船闸">
+                                <span>无锡船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="szcz" cityname="苏州船闸">
+                                <span>苏州船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="ntcz" cityname="南通船闸">
+                                <span>南通船闸</span>
+                            </li>
+                            <li class="list-group-item" pinyin="czcz" cityname="常州船闸">
+                                <span>常州船闸</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary zdsure" data-dismiss="modal">确认</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/search.js"></script>
+<script src="js/drag.js" charset="utf-8"></script>
+<script type="text/javascript">
+    var drake = dragula([document.querySelector('#containers')])
+</script>
+<script>
+    function preventBubble(event){
+        var e=arguments.callee.caller.arguments[0]||event; //若省略此句，下面的e改为event，IE运行可以，但是其他浏览器就不兼容
+        if (e && e.stopPropagation) {
+            e.stopPropagation();
+        } else if (window.event) {
+            window.event.cancelBubble = true;
+        }
+    }
+    function changeImg(obj){
+        if($(obj).hasClass("imgcollect2")){
+            $(obj).removeClass("imgcollect2");
+            alert("取消收藏")
+        }else if(!$(obj).hasClass("imgcollect2")){
+            $(obj).addClass("imgcollect2")
+            alert("收藏成功")
+        }
+        preventBubble();
+    }
+//        开关切换
+      $(".toggle").click(function(){
+          if($(this).children('input').attr("value")=="off"){
+              $(this).children('.track').css("background","#3BC083")
+              $(this).children('.track').children(".handle").css("margin-left","0.5rem")
+              $(this).children('input').val("on")
+          }else if($(this).children('input').attr("value")=="on"){
+              $(this).children('.track').css("background","#fff")
+              $(this).children('.track').children(".handle").css("margin-left",0)
+              $(this).children('input').val("off")
+          }
+      })
+//初始化弹窗的list-group-item背景
+    $(".xz").click(function(){
+      $(".active .list-group-item").removeClass("abg");
+      $(".active .group1 .list-group-item:first").addClass("abg");
+      $(".allcontent .list-group-item:first").addClass("abg");
+      $(".active .group2 .list-group-item:first").addClass("abg");
+        $(".search").val("");
+        $(".list-group-item").show();
+        $(".Mycollect").addClass('active')
+        $(".Allcz").removeClass('active')
+        $("#mycollect").addClass('active')
+        $("#allcz").removeClass('active')
+
+    })
+//list-group-item点击效果加背景
+    $(".list-group-item").click(function(){
+        $(this).parent("ul").children("li").removeClass("abg")
+        $(this).addClass("abg")
+
+    });
+//确定按钮事件，添加途径船闸
+    $(".sure").click(function(){
+        var infor1=$(".active .group1").find("li.abg span:first").html();
+        var infor2=$(".active .group2").find("li.abg").html();
+        var text="<li>";
+        text+="<div class='state'><span class='img state2'></span></div>";
+        text+="<div class='contentp'><p>"+infor1+"&nbsp;&nbsp;</span><span>"+infor2+"</span><span class='schx  czimg' onclick='schx(this)'></span><span class='down  czimg' onclick='down(this)'></span>"
+         +"<span class='up czimg' onclick='up(this)'></span></p></div></li>"
+        $(".wjg").append(text)
+
+    })
+    $(".zdsure").click(function(){
+        var infor=$(".hcend ul").find("li.abg span").html();
+        $(".end").val(infor)
+    })
+    $(".qdsure").click(function(){
+        var infor=$(".hcstart ul").find("li.abg span").html();
+        $(".start").val(infor)
+    })
+//删除可修改的航线
+function schx(obj){
+    $(obj).parent().parent().parent().remove()
+}
+//可修改航线位置变动
+function up(obj){
+    if($(obj).parent().parent().parent().prev()){
+        $(obj).parent().parent().parent().prev().before($(obj).parent().parent().parent())
+    }
+}
+function down(obj){
+    if($(obj).parent().parent().parent().next()){
+        $(obj).parent().parent().parent().next().after($(obj).parent().parent().parent())
+    }
+}
+//左侧状态栏
+
+  var all=[];
+  all=$(".allcontent .list-group-item");
+  $(".allcontent .list-group-item").each(function(){
+//        console.log($(this).text())
+  })
+</script>
+</body>
+</html>

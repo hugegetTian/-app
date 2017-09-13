@@ -1,0 +1,45 @@
+.modal-header{
+    padding:5px 10px;
+    background: #3879D9;
+    color:#FFF;
+}
+.modal-body{
+    padding:0 15px;
+}
+.modal-footer{
+    padding:10px;
+}
+.nav-tabs{
+    border-bottom: none;
+}
+.nav-tabs a{
+    color: #555;
+}
+.nav > li>a{
+    padding:5px 10px;
+}
+.nav-tabs li{
+    width:50%;
+    padding:0 0.5rem;
+}
+li.active a{
+    border:none!important;
+    border-bottom:2px solid #5388FE!important;
+    color:#5388FE;
+}
+.list-group-item{
+    text-align: center;
+}
+.list-group-item:last-child{
+    border-radius:0
+}
+.list-group-item:first-child{
+    border-radius:0;
+    border-top:0;
+}
+.list-group{
+    border-top:1px solid #ccc;
+}
+.abg{
+    background:#A0B7C7!important;
+}

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="applicable-device" content="mobile" />
+    <!-- 移动端 浏览器中页面将以原始大小显示，不允许缩放 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <!-- iphone会把一串数字识别为电话号码，点击的时候会提示是否呼叫，屏蔽这功能则把telephone设置为no -->
+    <meta content="telephone=no" name="format-detection"/>
+    <!-- iphone的私有标签，默认值为default（白色），可以定为black（黑色）和black-translucent（灰色半透明） -->
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!-- iphone设备的是有标签 允许全屏模式浏览，隐藏浏览器导航栏 -->
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <!-- 全屏显示 -->
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- 屏蔽百度转码 -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>Title</title>
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/mobiscroll.2.13.2.css">
+    <link rel="stylesheet" href="css/pub.css">
+    <link rel="stylesheet" href="css/qyhc.css">
+    <script src="js/js.js"></script>
+</head>
+<body class="bg">
+    <div class="hccontent">
+        <div class="cont">
+            <div class="tjczcontent">
+                <div class="tjcz">
+                    <div>途径船闸</div>
+                    <div class="xz demo-select-opt" >
+                        <a href="#" class="aimg"><img src="images/add.png" alt=""></a>
+                        <select id="names" class="demo-test-select-opt" data-role="none" style="display: none">
+                            <optgroup label="江阴船闸">
+                                <option value="0">上行</option>
+                                <option value="1">下行</option>
+                            </optgroup>
+                            <optgroup label="南京船闸">
+                                <option value="2">上行</option>
+                                <option value="3">下行</option>
+                            </optgroup>
+                            <optgroup label="扬州船闸">
+                                <option value="4">上行</option>
+                                <option value="5">下行</option>
+                            </optgroup>
+                            <optgroup label="高邮船闸">
+                                <option value="6">上行</option>
+                                <option value="7">下行</option>
+                            </optgroup>
+                            <optgroup label="南通船闸">
+                                <option value="8">上行</option>
+                                <option value="9">下行</option>
+                            </optgroup>
+                            <optgroup label="海安船闸">
+                                <option value="10">上行</option>
+                                <option value="11">下行</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+                <div class="rounte">
+                    <div class="state">
+                        <div class="simg state0">
+                            <img src="images/state_0.png" alt="">
+                        </div>
+                        <div class="dashed"></div>
+                        <div class="simg state0">
+                            <img src="images/state_2.png" alt="">
+                        </div>
+                        <div class="dashed"></div>
+                        <div class="simg state0">
+                            <img src="images/state_1.png" alt="">
+                        </div>
+                        <div class="dashed"></div>
+                        <div class="simg state0">
+                            <img src="images/state_3.png" alt="">
+                        </div>
+                    </div>
+                    <div class="hxinfor">
+                        <ul>
+                            <li>
+                                <p class="green">
+                                    <span>南京船闸&nbsp;&nbsp;</span>
+                                    <span>船行方向:上行</span>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <span>南京船闸&nbsp;&nbsp;</span>
+                                    <span>船行方向:上行</span>
+                                    <span class="schx"></span>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <span>南京船闸&nbsp;&nbsp;</span>
+                                    <span>船行方向:上行</span>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <span>南京船闸&nbsp;&nbsp;</span>
+                                    <span>船行方向:上行</span>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="posi">
+            <div>
+                <input type="text" placeholder="请填写航次起点" class="start">
+            </div>
+            <span class="lr">
+                <img src="images/lr.png" alt="">
+            </span>
+            <div>
+                <input type="text" placeholder="请填写航次终点" class="end">
+            </div>
+        </div>
+        <div class="ship">
+            <div class="shipdata">
+                <div>船舶净高</div>
+                <input type="text" placeholder="请填写船舶净高">
+            </div>
+            <div class="shipdata">
+                <div>船舶吃水</div>
+                <input type="text" placeholder="请填写船舶吃水">
+            </div>
+            <div class="shipdata">
+                <div>实际载货</div>
+                <input type="text" placeholder="实际载货量">
+            </div>
+            <div class="shipdata" style="border: none">
+                <div>货物种类</div>
+                <select>
+                    <option value="1">钢材</option>
+                    <option value="1">石料</option>
+                    <option value="1">木材</option>
+                    <option value="1">钢材</option>
+                    <option value="1">钢材</option>
+                </select>
+            </div>
+        </div>
+        <div class="dangergoods">
+            <div class="shipdata" style="border: none">
+                <div>是否危险品</div>
+                <label class="toggle toggle-positive">
+                    <input type="hidden" value="off">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div class="ship">
+            <div class="shipdata">
+                <div>集装箱数</div>
+                <input type="text" placeholder="请填数量">
+            </div>
+            <div class="shipdata">
+                <div>超载级别</div>
+                <select>
+                    <option value="1">正常</option>
+                    <option value="1">轻度超载</option>
+                    <option value="1">严重超载</option>
+                </select>
+            </div>
+            <div class="shipdata shipdata-posi">
+                <div>是否超长</div>
+                <label class="toggle toggle-positive">
+                    <input type="hidden" value="off">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </div>
+            <div class="shipdata shipdata-posi" style="border: none">
+                <div>是否超宽</div>
+                <label class="toggle toggle-positive">
+                    <input type="hidden" value="off">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/mobiscroll.2.13.2.js"></script>
+    <script>
+      $(".toggle").click(function(){
+          if($(this).children('input').attr("value")=="off"){
+              $(this).children('.track').css("background","#3BC083")
+              $(this).children('.track').children(".handle").css("margin-left","0.5rem")
+              $(this).children('input').val("on")
+          }else if($(this).children('input').attr("value")=="on"){
+              $(this).children('.track').css("background","#fff")
+              $(this).children('.track').children(".handle").css("margin-left",0)
+              $(this).children('input').val("off")
+          }
+      })
+      $(function () {
+          var opt = {
+              'default': {
+                  theme: 'default',
+                  mode: 'scroller',
+                  display: 'modal',
+                  animate: 'fade'
+              },
+              'select-opt': {
+                  preset: 'select',
+                  group: true,
+                  width: 50
+              }
+          }
+          $('.demo-test-select-opt').scroller($.extend(opt['select-opt'],opt['default']));
+      });
+      $(".aimg").click(function () {
+          $("#names").trigger("click");
+      });
+        $(".dwb-s").click(function(){
+            alert(1)
+//            alert($("div").attr("aria-selected","true").html)
+        })
+        function read(obj){
+            if($(obj).hasClass("dwb0")){
+               var sd=document.getElementsByClassName("dw-sel");
+                alert($(sd[0]).children("div").html()+$(sd[1]).children("div").html());
+            }
+
+        }
+    </script>
+</body>
+</html>
